@@ -1,31 +1,31 @@
 import uuid
 
 class Item:
-    def __init__(self, tipo, titulo, autor, genero, valoracion=None, id=None):
+    def __init__(self, tipo, ingredientes, comida, chef, categoria=None, id=None):
         self.id = id or str(uuid.uuid4())
-        self.tipo = tipo  # Libro, Película, Música
-        self.titulo = titulo
-        self.autor = autor
-        self.genero = genero
-        self.valoracion = valoracion
+        self.tipo = tipo  
+        self.ingredientes = ingredientes
+        self.comida = comida
+        self.chef = chef
+        self.categoria = categoria
 
     def to_dict(self):
         return {
             "id": self.id,
             "tipo": self.tipo,
-            "titulo": self.titulo,
-            "autor": self.autor,
-            "genero": self.genero,
-            "valoracion": self.valoracion
+            "ingredientes": self.ingredientes,
+            "comida": self.comida,
+            "chef": self.chef,
+            "categoria": self.categoria
         }
 
     @staticmethod
     def from_dict(data):
         return Item(
             tipo=data.get("tipo"),
-            titulo=data.get("titulo"),
-            autor=data.get("autor"),
-            genero=data.get("genero"),
-            valoracion=data.get("valoracion"),
+            ingredientes=data.get("ingredientes"),
+            comida=data.get("comida"),
+            chef=data.get("chef"),
+            categoria=data.get("categoria"),
             id=data.get("id")
         )
