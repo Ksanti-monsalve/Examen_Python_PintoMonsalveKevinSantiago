@@ -15,7 +15,6 @@ def agregar_elemento(tipo):
     comida = input("hamburguesas: ").strip()
     chef = input("chefs: ").strip()
     categoria = input("categoria: ").strip()
-    valoracion = valoracion if valoracion else None
     nuevo = Item(tipo, ingredientes, comida, chef, categoria)
     coleccion.append(nuevo)
     print(f"{tipo} agregado correctamente.\n")

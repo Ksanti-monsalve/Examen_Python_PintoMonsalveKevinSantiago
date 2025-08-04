@@ -27,7 +27,7 @@ def mostrar_menu_principal():
 6. Ver Elementos por Categoría
 7. Salir
 ===========================================
-Selecciona una opción (1-7): """)
+Selecciona una opción (1-7): """, end='')
 
 def menu_añadir():
     while True:
@@ -39,8 +39,8 @@ def menu_añadir():
 1. Ingredientes
 2. Hamburguesas
 3. Chefs
-4. Categorias
-5. Regresar al menu principal
+4. Categorías
+5. Regresar al menú principal
 ===========================================
 Selecciona una opción (1-5): """, end='')
         op = input().strip()
@@ -62,8 +62,8 @@ def menu_listar():
 1. Ver Todos los ingredientes
 2. Ver Todas las hamburguesas
 3. Ver Todos los chefs
-4. Ver Todas las categorias
-5. Regresar al menu principal
+4. Ver Todas las categorías
+5. Regresar al menú principal
 ===========================================
 Selecciona una opción (1-5): """, end='')
         op = input().strip()
@@ -85,7 +85,7 @@ def menu_buscar():
 1. Buscar por ingredientes
 2. Buscar por tipo de hamburguesa
 3. Buscar por chef
-4. buscar por categoria        
+4. Buscar por categoría        
 5. Regresar al Menú Principal
 ===========================================
 Selecciona una opción (1-5): """, end='')
@@ -107,12 +107,12 @@ def menu_editar():
 ¿Qué tipo de cambio deseas realizar?
 1. Editar ingredientes
 2. Editar hamburguesas
-3. Editar categorias
+3. Editar categorías
 4. Regresar al Menú Principal
 ===========================================
 Selecciona una opción (1-4): """, end='')
         op = input().strip()
-        if op == '5':
+        if op == '4':
             break
         campos = {'1': 'ingredientes', '2': 'hamburguesas', '3': 'categorias'}
         if op in campos:
@@ -126,10 +126,10 @@ def menu_eliminar():
 ===========================================
           Eliminar un Elemento
 ===========================================
-¿Cómo deseas eliminar?
+¿Qué deseas eliminar?
 1. Eliminar ingredientes
 2. Eliminar hamburguesas
-3. Eliminar categoria
+3. Eliminar categoría
 4. Regresar al Menú Principal
 ===========================================
 Selecciona una opción (1-4): """, end='')
@@ -137,52 +137,39 @@ Selecciona una opción (1-4): """, end='')
         if op == '4':
             break
         campos = {'1': 'ingredientes', '2': 'hamburguesas', '3': 'categorias'}
-        if op in ['1', '2', '3']:
-            eliminar_elemento(op)
+        if op in campos:
+            eliminar_elemento(campos[op])
         else:
             print("Opción inválida, intenta de nuevo.")
 
 def menu_por_categoria():
-    while True:
-        print("""
+    print("""
 ===========================================
        Ver Elementos por Categoría
 ===========================================
-¿Qué categoría deseas ver?
-1. Ver categoria
-===========================================
-Selecciona una opción (1-1): """, end='')
-        op = input().strip()
-        categorias = {'1': 'categoria',}
-        if op == '1':
-            break
-        elif op in categorias:
-            listar_por_categoria(categorias[op])
-        else:
-            print("Opción inválida, intenta de nuevo.")
+""")
+    categoria = input("Ingrese la categoría que desea ver: ").strip()
+    listar_por_categoria(categoria)
 
 def main():
     while True:
         mostrar_menu_principal()
         opcion = input().strip()
+
         if opcion == '1':
             menu_añadir()
-            agregar_elemento()
         elif opcion == '2':
             menu_listar()
-            listar_elementos()
         elif opcion == '3':
             menu_buscar()
-            buscar_elemento()
-        elif opcion == '5':
+        elif opcion == '4':
             menu_editar()
-            editar_elemento()
-        elif opcion == '6':
+        elif opcion == '5':
             menu_eliminar()
-            eliminar_elemento()
-        elif opcion == '7':
+        elif opcion == '6':
             menu_por_categoria()
-            listar_por_categoria()
+        elif opcion == '7':
+            print("Saliendo del programa...")
             break
         else:
             print("Opción inválida, intenta de nuevo.")
