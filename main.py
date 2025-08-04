@@ -1,16 +1,16 @@
 import os
-from tabulate import tabulate
-from controllers import (
-    agregar_elemento,listar_elementos, buscar_elemento,
-    editar_elemento, eliminar_elemento,listar_por_categoria,
-)
+import sys
 
-from controllers import listar_elementos
-from controllers import agregar_elemento
-from controllers import buscar_elemento
-from controllers import editar_elemento
-from controllers import eliminar_elemento
-from controllers import listar_por_categoria
+from tabulate import tabulate
+from controllers.coleccion_services import (
+    agregar_elemento,
+    listar_elementos,
+    buscar_elemento,
+    editar_elemento,
+    eliminar_elemento,
+    listar_por_categoria
+)
+from utils.json_handler import cargar_json, guardar_json
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "coleccion.json")
 
@@ -25,8 +25,7 @@ def mostrar_menu_principal():
 4. Editar un Elemento
 5. Eliminar un Elemento
 6. Ver Elementos por Categoría
-
-8. Salir
+7. Salir
 ===========================================
 Selecciona una opción (1-7): """)
 
@@ -168,17 +167,22 @@ def main():
         opcion = input().strip()
         if opcion == '1':
             menu_añadir()
+            agregar_elemento()
         elif opcion == '2':
             menu_listar()
+            listar_elementos()
         elif opcion == '3':
             menu_buscar()
-        elif opcion == '4':
-            menu_editar()
+            buscar_elemento()
         elif opcion == '5':
-            menu_eliminar()
+            menu_editar()
+            editar_elemento()
         elif opcion == '6':
-            menu_por_categoria()
+            menu_eliminar()
+            eliminar_elemento()
         elif opcion == '7':
+            menu_por_categoria()
+            listar_por_categoria()
             break
         else:
             print("Opción inválida, intenta de nuevo.")

@@ -1,7 +1,9 @@
 import os
+import sys
+
 from tabulate import tabulate
-from models import Item
-from utils import cargar_json, guardar_json
+
+
 
 DATA_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "coleccion.json")
 
