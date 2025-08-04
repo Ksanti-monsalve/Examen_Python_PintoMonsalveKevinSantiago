@@ -1,9 +1,16 @@
 import os
 from tabulate import tabulate
 from controllers import (
-    agregar_elemento, listar_elementos, buscar_elemento,
-    editar_elemento, eliminar_elemento, listar_por_categoria,
+    agregar_elemento,listar_elementos, buscar_elemento,
+    editar_elemento, eliminar_elemento,listar_por_categoria,
 )
+
+from controllers import listar_elementos
+from controllers import agregar_elemento
+from controllers import buscar_elemento
+from controllers import editar_elemento
+from controllers import eliminar_elemento
+from controllers import listar_por_categoria
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "coleccion.json")
 
