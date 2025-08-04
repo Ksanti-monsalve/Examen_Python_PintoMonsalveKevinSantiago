@@ -1,0 +1,31 @@
+import uuid
+
+class Item:
+    def __init__(self, tipo, titulo, autor, genero, valoracion=None, id=None):
+        self.id = id or str(uuid.uuid4())
+        self.tipo = tipo  # Libro, Película, Música
+        self.titulo = titulo
+        self.autor = autor
+        self.genero = genero
+        self.valoracion = valoracion
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "tipo": self.tipo,
+            "titulo": self.titulo,
+            "autor": self.autor,
+            "genero": self.genero,
+            "valoracion": self.valoracion
+        }
+
+    @staticmethod
+    def from_dict(data):
+        return Item(
+            tipo=data.get("tipo"),
+            titulo=data.get("titulo"),
+            autor=data.get("autor"),
+            genero=data.get("genero"),
+            valoracion=data.get("valoracion"),
+            id=data.get("id")
+        )
